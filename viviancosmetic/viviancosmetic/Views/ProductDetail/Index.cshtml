@@ -1,0 +1,175 @@
+﻿@model viviancosmetic.ViewModel.LoadUserReview
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+    Layout = "_Layout";
+}
+<link rel="icon" href="~/img/logo.png" type="image/gif" sizes="16x16">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="~/css/base.css">
+<link rel="stylesheet" href="~/css/main.css">
+<link rel="stylesheet" href="~/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
+<link rel="stylesheet" href="~/fonts/themify-icons/themify-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<div class="app__container mtb-20">
+    <div class="grid">
+        <div class="grid__row">
+            <div class="grid__column-1-2">
+                <img src="@Model.Images"
+                     alt="" class="product-detail__img">
+            </div>
+
+            <div class="grid__column-1-2 product-detail">
+                <div class="product-detail__heading">
+                    <h2 class="product-detail__title">@Model.Name</h2>
+                    <div class="product-detail__data">
+                        <div class="product-detail__data--like-rating">
+                            @if (ViewBag.Average != 0)
+                            {
+                                <p class="product-detail__data-like">@Math.Round((double)ViewBag.Average, 1)</p>
+                            }
+                            else
+                            {
+                                <p class="product-detail__data-like">Chưa có đánh giá</p>
+                            }
+                            <div class="product-detail__rating">
+                                @if (ViewBag.Average == null)
+                                {
+                                    for (var i = 0; i < 5; i++)
+                                    {
+                                        <i class="product-detail__rating-star--empty fas fa-star"></i>
+                                    }
+                                }
+                                else
+                                {
+                                    var star = Math.Round((double)ViewBag.Average, 0);
+                                    for (var i = 0; i < star; i++)
+                                    {
+                                        <i class="product-detail__rating-star--gold fas fa-star"></i>
+                                    }
+                                    for (var i = 0; i < 5 - star; i++)
+                                    {
+                                        <i class="product-detail__rating-star--empty fas fa-star"></i>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <span class="bulkhead">|</span>
+                        <p class="product-detail__data-sold">@Model.Sold</p>
+                        <p class="product-detail__data-sold-text">Đã Bán</p>
+                    </div>
+
+                    @if (Model.SaleOff > 0)
+                    {
+                        var priceOld = Model.Price;
+                        var priceNew = priceOld * (100 - Model.SaleOff) / 100;
+                        <span class="product-detail__price-old">@priceOld.ToString("#,##0")<span>đ</span></span>
+                        <span class="product-detail__price-new">@priceNew.ToString("#,##0")<span>đ</span></span>
+                    }
+                    else
+                    {
+                        <span class="product-detail__price-new">@Model.Price.ToString("#,##0")<span>đ</span></span>
+                    }
+
+                    <div class="product-detail__btn">
+                        <button class="btn btn__add-cart">Thêm vào giỏ hàng</button>
+                        <button class="btn btn__buy-now">Mua ngay</button>
+                    </div>
+
+                    <p class="product-detail__description">Mô tả sản phẩm</p>
+                    <p class="product-detail__description-text">
+                        @Model.Description
+                    </p>
+                    <p class="product-detail__ingredient">Thành phần sản phẩm</p>
+                    <p class="product-detail__ingredient-text">
+                        @Model.Ingredient
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        @if (HttpContextAccessor.HttpContext.Session.GetString("Id") != null)
+        {
+            @using (Html.BeginForm("PostReview", "ProductDetail", FormMethod.Post, new { onsubmit = "return SubmitComment()" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="grid__row mt-50">
+                    <div class="comment-rating-box">
+                        <h4 class="comment-title">ĐÁNH GIÁ SẢN PHẨM</h4>
+                        <p class="rating-star-title">Điểm:</p>
+                        <div class="rating-box" onmouseout="LevelSelected()">
+                            <i class="rating-box-star--empty fas fa-star" id="Level1" onclick="Level(1)" onmouseover="LevelOver(1)" onmouseout="LevelOut(1)"></i>
+                            <i class="rating-box-star--empty fas fa-star" id="Level2" onclick="Level(2)" onmouseover="LevelOver(2)" onmouseout="LevelOut(2)"></i>
+                            <i class="rating-box-star--empty fas fa-star" id="Level3" onclick="Level(3)" onmouseover="LevelOver(3)" onmouseout="LevelOut(3)"></i>
+                            <i class="rating-box-star--empty fas fa-star" id="Level4" onclick="Level(4)" onmouseover="LevelOver(4)" onmouseout="LevelOut(4)"></i>
+                            <i class="rating-box-star--empty fas fa-star" id="Level5" onclick="Level(5)" onmouseover="LevelOver(5)" onmouseout="LevelOut(5)"></i>
+                        </div>
+                        <p class="comment-box-title">Đánh giá:</p>
+                        <textarea type="text" name="Comment" class="comment-box__input" placeholder="Hãy cho chúng tôi biết cảm nhận của bạn về sản phẩm này"></textarea>
+                        <div class="comment-rating-box-btn">
+                            <input type="hidden" name="ProductId" value="@Model.ProductId" />
+                            <input type="hidden" name="UserId" value="@HttpContextAccessor.HttpContext.Session.GetString("Id")" />
+                            <input type="hidden" name="Rating" id="Rating" value="0" />
+                            <input type="submit" value="Gửi đánh giá" class="btn btn-send-review" />
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="user-unable-login">
+                <p class="alert-login">Bạn chưa đăng nhập? Vui lòng đăng nhập để đánh giá.</p>
+                <a href="@Url.Action("Login","Home")" class="to-user-login">ĐĂNG NHẬP</a>
+            </div>
+        }
+        @foreach (var item in Model.ListOfComment)
+        {
+            <div class="grid__row">
+                <div class="user-review-box">
+                    <p class="user-review-box__name">@Model.getFullName(item.UserId)</p>
+                    <div class="user-review-box__rating-star">
+                        @if (item.Rating == 0)
+                        {
+                            for (var i = 0; i < 5; i++)
+                            {
+                                <i class="user-review-box__rating-star--empty fas fa-star"></i>
+                            }
+                        }
+                        else
+                        {
+                            var star = Math.Round((double)item.Rating, 0);
+                            for (var i = 0; i < star; i++)
+                            {
+                                <i class="user-review-box__rating-star--gold fas fa-star"></i>
+                            }
+                            for (var i = 0; i < 5 - star; i++)
+                            {
+                                <i class="user-review-box__rating-star--empty fas fa-star"></i>
+                            }
+                        }
+                    </div>
+                    <p class="user-review-text">@item.Comments</p>
+                    <p class="user-review-date">@item.CreateDate</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="~/js/ProductDetailUserRating.js"></script>
+<script>
+    function SubmitComment() {
+        if (document.querySelector("#Rating").value == "0") {
+            alert("Vui lòng cho điểm");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+

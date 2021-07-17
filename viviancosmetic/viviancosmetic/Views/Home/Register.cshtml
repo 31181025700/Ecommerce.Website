@@ -1,0 +1,50 @@
+﻿@model viviancosmetic.Data.User
+
+@{
+    ViewData["Title"] = "Đăng kí";
+    Layout = "_LayoutLoginRegister";
+}
+
+<link rel="icon" href="~/img/logo.png" type="image/gif" sizes="16x16">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="~/css/base.css">
+<link rel="stylesheet" href="~/css/main.css">
+<link rel="stylesheet" href="~/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
+<link rel="stylesheet" href="~/fonts/themify-icons/themify-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<div class="auth-form">
+    <div class="auth-form__header">
+        <h3 class="auth-form__heading">ĐĂNG KÍ</h3>
+    </div>
+    @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        
+
+<div class="auth-form__form">
+    <div class="auth-form__group">
+        @Html.TextBoxFor(u => u.FullName, "", new { @class = "auth-form__input", @placeholder = "Họ và tên của bạn" })
+        @Html.ValidationMessageFor(u => u.FullName, "", new { @class = "badge badge-danger" })
+    </div>
+    <div class="auth-form__group">
+        @Html.TextBoxFor(u => u.Email, "", new { @class = "auth-form__input", @placeholder = "Email của bạn" })
+        @Html.ValidationMessageFor(u => u.Email, "", new { @class = "badge badge-danger" })
+    </div>
+    <div class="auth-form__group">
+        @Html.PasswordFor(u => u.Password, new { @class = "auth-form__input", @placeholder = "Mật khẩu của bạn" })
+        @Html.ValidationMessageFor(u => u.Password, "", new { @class = "badge badge-danger" })
+    </div>
+    <div class="auth-form__group">
+        @Html.PasswordFor(u => u.ConfirmPassword, new { @class = "auth-form__input", @placeholder = "Nhập lại mật khẩu" })
+        @Html.ValidationMessageFor(u => u.ConfirmPassword, "", new { @class = "badge badge-danger" })
+    </div>
+</div>
+
+            <div class="auth-form__controls">
+                <button class="btn btn--normal"><a href="@Url.Action("Index","Home")" class="btn--back">TRỞ LẠI</a></button>
+                <button type="submit" class="btn btn--primary">ĐĂNG KÍ</button>
+            </div>
+        
+    }
+</div>

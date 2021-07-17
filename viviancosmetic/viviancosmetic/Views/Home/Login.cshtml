@@ -1,0 +1,43 @@
+﻿@model viviancosmetic.Data.User
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+    Layout = "_LayoutLoginRegister";
+}
+<link rel="icon" href="~/img/logo.png" type="image/gif" sizes="16x16">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="~/css/base.css">
+<link rel="stylesheet" href="~/css/main.css">
+<link rel="stylesheet" href="~/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
+<link rel="stylesheet" href="~/fonts/themify-icons/themify-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<div class="auth-form">
+    <div class="auth-form__header">
+        <h3 class="auth-form__heading">ĐĂNG NHẬP</h3>
+    </div>
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        
+            <div class="auth-form__form">
+                <div class="auth-form__group">
+                    @Html.TextBoxFor(u => u.Email, "", new { @class = "auth-form__input", @placeholder = "Email của bạn" })
+                </div>
+                <div class="auth-form__group">
+                    @Html.PasswordFor(u => u.Password, new { @class = "auth-form__input", @placeholder = "Mật khẩu của bạn" })
+                </div>
+            </div>
+
+            <div class="auth-form__aside">
+                <a href="" class="auth-form__help">Quên mật khẩu?</a>
+                <a href="@Url.Action("Register","Home")" class="to-user-register">Đăng kí</a>
+            </div>
+
+            <div class="auth-form__controls">
+                <button class="btn btn--normal"><a  href="@Url.Action("Index","Home")" class="btn--back" >TRỞ LẠI</a></button>
+                <button class="btn btn--primary">ĐĂNG NHẬP</button>
+            </div>
+        
+    }
+</div>

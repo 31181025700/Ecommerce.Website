@@ -1,0 +1,401 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VivianCosmetic</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="icon" href="~/img/logo.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="~/css/base.css">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/productdetail.css">
+    <link rel="stylesheet" href="~/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
+    <link rel="stylesheet" href="~/fonts/themify-icons/themify-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="grid">
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate">
+                            Vào cửa hàng trên ứng dụng VIVI Shop
+
+                            <!-- Header QR CODE -->
+                            <div class="header__qr">
+                                <img src="~/img/qr_code.png" alt="QR Code" class="header__qr-img">
+                                <div class="header__qr-apps">
+                                    <a href="" class="header__qr-link">
+                                        <img src="~/img/AppStore.png" alt="" class="header__qr-download-img">
+                                    </a>
+                                    <a href="" class="header__qr-link">
+                                        <img src="~/img/GooglePlay.png" alt="" class="header__qr-download-img">
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="header__navbar-item">
+                            <span class="header__navbar-title--no-pointer">Kết nối</span>
+                            <a href="" class=" header__navbar-icon-link">
+                                <i class="header__navbar-icon ti-facebook"></i>
+                            </a>
+                            <a href="" class=" header__navbar-icon-link">
+                                <i class="header__navbar-icon ti-instagram"></i>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item header__navbar-item--has-notify">
+                            <a href="" style="text-decoration: none" class=" header__navbar-item-link">
+                                <i class="header__navbar-icon ti-bell"></i>
+                                Thông báo
+                            </a>
+                            <div class="header__notify">
+                                <header class="header__notify-header">
+                                    <h3>Thông Báo Mới Nhận</h3>
+                                </header>
+                                <ul class="header__notify-list">
+                                    <li class="header__notify-item">
+                                        <a href="" class="header__notify-link header__notify-item--viewed">
+                                            <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/moonbeam-cushion-highlighter-compact-stylized.jpg?v=1622221201" alt="MOONBEAM CUSHION HIGHLIGHTER" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">MOONBEAM CUSHION HIGHLIGHTER</span>
+                                                <span class="header__notify-description"> Nắm bắt được sự kỳ diệu và độ sáng của những tia sáng mặt trăng.</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__notify-item">
+                                        <a href="" class="header__notify-link header__notify-item--viewed">
+                                            <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/Venetian-Rose-Luxe-Set.jpg?v=1624050305" alt="The Ultimate Venetian Rose Set" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">The Ultimate Venetian Rose Set</span>
+                                                <span class="header__notify-description">Mua sắm trọn bộ Bộ sưu tập hoa hồng Venice + Hoa tai EM phiên bản giới hạn với mức tiết kiệm đặc biệt trong thời gian có hạn!</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__notify-item">
+                                        <a href="" class="header__notify-link header__notify-item--viewed">
+                                            <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/divine-skies-eyeshadow-palette-venetian-rose-primary-open.png?v=1620080730" alt="DIVINE SKIES" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">DIVINE SKIES</span>
+                                                <span class="header__notify-description">Lấy cảm hứng từ sự lãng mạn, sang trọng và các tông màu nữ tính, bảng màu này có một loạt các màu hồng phấn và trung tính đầy mê hoặc với lớp hoàn thiện từ mờ đến sáng bóng. </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__notify-item">
+                                        <a href="" class="header__notify-link header__notify-item--viewed">
+                                            <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/bunnyliptrio.png?v=1616797040" alt="BUNNY LIP TRIO" class="header__notify-img">
+                                            <div class="header__notify-info">
+                                                <span class="header__notify-name">BUNNY LIP TRIO</span>
+                                                <span class="header__notify-description">Bộ ba sản phẩm cần thiết cho môi bán chạy nhất của chúng tôi, hoàn hảo để tạo lớp và trang điểm cùng nhau.</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <footer class="header__notify-footer">
+                                    <a href="" class="header__notify-footer-btn">Xem tất cả</a>
+                                </footer>
+                            </div>
+                        </li>
+
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("Id") == null)
+                        {
+                            <li class="header__navbar-item header__navbar-item--strong header__navbar-item--separate">
+                                <a href="@Url.Action("Register","Home")" class="header__navbar-item--decoration">Đăng kí</a>
+                            </li>
+                            <li class="header__navbar-item header__navbar-item--strong">
+                                <a href="@Url.Action("Login","Home")" class="header__navbar-item--decoration">Đăng nhập</a>
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li class="header__navbar-item header__navbar-user">
+                                <span class="header__navbar-user-name">@HttpContextAccessor.HttpContext.Session.GetString("FullName")</span>
+
+                                <ul class="header__navbar-user-menu">
+                                    <li class="header__navbar-user-item">
+                                        <a href="">Tài khoản của tôi</a>
+                                    </li>
+                                    <li class="header__navbar-user-item">
+                                        <a href="">Đơn hàng đã mua</a>
+                                    </li>
+                                    <li class="header__navbar-user-item">
+                                        <a href="">Địa chỉ của tôi</a>
+                                    </li>
+                                    <li class="header__navbar-user-item header__navbar-user-item--separate">
+                                        <a href="@Url.Action("Logout","Home")">Đăng xuất</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+
+                <!-- Header with search -->
+                <div class="header-with-search">
+                    <div class="header__logo">
+                        <a href="/" class="header__logo-link">
+                            <img src="~/img/logo.png" alt="Vivian Cosmetic" class="header__logo-img">
+                        </a>
+                    </div>
+
+                    <div class="header__search">
+                        <div class="header__search-input-wrap">
+                            <input type="text" class="header__search-input" placeholder="Bạn đang tìm kiếm sản phẩm nào?">
+
+                            <!--Search History  -->
+                            <div class="header__search-history">
+                                <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
+                                <ul class="header__search-history-list">
+                                    <li class="header__search-history-items">
+                                        <a href="">Cushion highlighter</a>
+                                    </li>
+                                    <li class="header__search-history-items">
+                                        <a href="">Eyeliner</a>
+                                    </li>
+                                    <li class="header__search-history-items">
+                                        <a href="">Serum blush</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button class="header__search-btn">
+                            <i class="header__search-btn-icon ti-search"></i>
+                        </button>
+
+                    </div>
+
+                    <!-- Cart Layout -->
+                    <div class="header__cart">
+                        <div class="header__cart-wrap">
+                            <i class="header__cart-icon ti-bag"></i>
+                            <span class="header__cart-notice">3</span>
+
+                            <!-- Empty cart -->
+                            <!-- Empty cart: header__cart-list--empty-cart -->
+                            <div class="header__cart-list">
+                                <img src="~/img/empty-cart.png" alt="Giỏ hàng trống" class="header__cart-list--empty-cart-img">
+                                <span class="header__cart-list--empty-cart-message">
+                                    Giỏ của bạn đang trống
+                                </span>
+
+                                <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
+                                <ul class="header__cart-list-item">
+                                    <!-- Cart Item -->
+                                    <li class="header__cart-item">
+                                        <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/moonbeam-cushion-highlighter-primary-open-tilt-halo.png?v=1620757128" alt="" class="header__cart-img">
+                                        <div class="header__cart-item-info">
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">Moonbeam cushion highlighter</h5>
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">810.000đ</span>
+                                                    <span class="header__cart-item-multiply">x</span>
+                                                    <span class="header__cart-item-quantity">1</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    Phân loại: Trang điểm mặt
+                                                </span>
+                                                <span class="header__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="header__cart-item">
+                                        <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/serumblush_venetianrose_closed.png?v=1601668044" alt="" class="header__cart-img">
+                                        <div class="header__cart-item-info">
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">Color drops serum blush venetian rose</h5>
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">625.000đ</span>
+                                                    <span class="header__cart-item-multiply">x</span>
+                                                    <span class="header__cart-item-quantity">1</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    Phân loại: Trang điểm má
+                                                </span>
+                                                <span class="header__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="header__cart-item">
+                                        <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/illustrative-felt-tip-open.png?v=1607379042" alt="" class="header__cart-img">
+                                        <div class="header__cart-item-info">
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">Felt tip illustrative eyeliner </h5>
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">525.000đ</span>
+                                                    <span class="header__cart-item-multiply">x</span>
+                                                    <span class="header__cart-item-quantity">1</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    Phân loại: Trang điểm mắt
+                                                </span>
+                                                <span class="header__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="header__cart-item">
+                                        <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/lip-cushion-tinted-lip-luminizer-quartz-open.png?v=1616022737" alt="" class="header__cart-img">
+                                        <div class="header__cart-item-info">
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">Lip cushion balm </h5>
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">450.000đ</span>
+                                                    <span class="header__cart-item-multiply">x</span>
+                                                    <span class="header__cart-item-quantity">1</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    Phân loại: Trang điểm môi
+                                                </span>
+                                                <span class="header__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="header__cart-item">
+                                        <img src="https://cdn.shopify.com/s/files/1/0902/2442/products/daydream-cushion-cloud-dream-primary-2up.png?v=1616633606" alt="" class="header__cart-img">
+                                        <div class="header__cart-item-info">
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">Daydream cushion tinted spf </h5>
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">950.000đ</span>
+                                                    <span class="header__cart-item-multiply">x</span>
+                                                    <span class="header__cart-item-quantity">1</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="header__cart-item-body">
+                                                <span class="header__cart-item-description">
+                                                    Phân loại: Trang điểm mặt
+                                                </span>
+                                                <span class="header__cart-item-remove">Xóa</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <button class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="app__container">
+            @RenderBody()
+        </div>
+
+        <footer class="footer">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-1-2">
+                        <div class="grid__row">
+                            <div class="grid__column-1-4">
+                                <h3 class="footer_heading">Cửa hàng</h3>
+                                <ul class="footer__list">
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Tất cả sản phẩm</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid__column-1-4">
+                                <h3 class="footer_heading">Về chúng tôi</h3>
+                                <ul class="footer__list">
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Vivian Cosmetic</a>
+                                    </li>
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Về sản phẩm</a>
+                                    </li>
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Tuyển dụng</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid__column-1-4">
+                                <h3 class="footer_heading">Kiến thức</h3>
+                                <ul class="footer__list">
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Blog</a>
+                                    </li>
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Video của Vivian</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid__column-1-4">
+                                <h3 class="footer_heading">Trợ giúp</h3>
+                                <ul class="footer__list">
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Câu hỏi thường gặp</a>
+                                    </li>
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Chính sách bảo mật</a>
+                                    </li>
+                                    <li class="footer-item">
+                                        <a href="" class="footer-item__link">Điều khoản dịch vụ</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="grid__column-1-2">
+                        <div class="footer__box">
+                            <div class="footer__box-header">
+                                <div class="footer__box-header-icon-left">
+                                    <i class="ti-more"></i>
+                                </div>
+                                <div class="footer__box-header-icon-right">
+                                    <i class="ti-close"></i>
+                                </div>
+                            </div>
+
+                            <div class="footer__box-content">
+                                <h3>Nhận thông tin cập nhật và hơn thế nữa!</h3>
+                                <p>Đăng ký để nhận các mẹo hữu ích về da và cách sử dụng sản phẩm</p>
+                                <input type="email" class="footer__box-input"></input>
+                                <div class="footer__box-btn">
+                                    <button class="btn btn-box-footer">THEO DÕI</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid__row">
+                    <div class="footer__copyright">
+                        <i class="far fa-copyright"></i>
+                        <span>2021 Vivian Cosmetic</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

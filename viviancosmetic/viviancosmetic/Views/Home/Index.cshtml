@@ -1,0 +1,199 @@
+﻿@model List<LoadProducts>
+
+@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "_Layout";
+}
+
+<div class="grid">
+    <div class="grid__row">
+        <div class="featured-product">
+            <h2 class="featured-product__heading">Sản phẩm nổi bật</h2>
+        </div>
+    </div>
+    <div class="grid__row">
+        @foreach (var item in ViewBag.featuredproduct)
+        {
+            <div class="grid__column-1-6">
+                <a class="feature-product-item" href="@Url.Action("Index","ProductDetail", new { id = item.Id })">
+                    <div class="feature-product-item-img" style="background-image: url(@item.Images);"></div>
+                    <h4 class="feature-product-item-name">@item.Name</h4>
+
+                    <div class="home-product-item-price">
+                        @if (item.SaleOff > 0)
+                        {
+                            var priceOld = @item.Price;
+                            var priceNew = priceOld * (100 - item.SaleOff) / 100;
+                            <span class="home-product-item-price-old">@priceOld.ToString("#,##0")<span>đ</span></span>
+                            <div class="home-product-item-price-new">@priceNew.ToString("#,##0")<span>đ</span></div>
+                        }
+                        else
+                        {
+                            <div class="home-product-item-price-new">@item.Price.ToString("#,##0")<span>đ</span></div>
+                        }
+                    </div>
+                    <div class="feature-product-item__favourite">
+                        <i class="ti-gift"></i>
+                        <span>Siêu ưu đãi</span>
+                    </div>
+                    <div class="feature-product-btn">
+                        <button class="btn btn-feature-product">MUA NGAY</button>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+    <div class="grid__row app__content">
+        <div class="grid__column-2">
+            <nav class="category">
+                <h3 class="category__heading">
+                    <i class="category__heading-icon ti-crown"></i>
+                    Danh mục
+                </h3>
+
+                <ul class="category-list">
+                    @foreach (var item in ViewBag.categories)
+                    {
+                        <li class="category-item category-item--active">
+                            <a href="@Url.Action("Index", "Home", new { categoryId = item.Id })" class="category-item__link">@item.Name</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+
+        <div class="grid__column-10">
+            <div class="home-filter">
+                <span class="home-filter--label">Sắp xếp theo</span>
+                <button class="home-filter__btn btn">Mới nhất</button>
+                <button class="home-filter__btn btn">Bán chạy</button>
+
+                <div class="select-input">
+                    <span class="select-input__label">Giá</span>
+                    <i class="select-input__icon ti-angle-down"></i>
+                    <ul class="select-input__list">
+                        <li class="select-input__item">
+                            <a href="" class="select-input__link">Giá: Thấp đến cao</a>
+                        </li>
+                        <li class="select-input__item">
+                            <a href="" class="select-input__link">Giá: Cao đến thấp</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="home-filter__page">
+                    <span class="home-filter__page-num">
+                        <span class="home-filter__page-current">1</span>/14
+                    </span>
+
+                    <div class="home-filter__page-control">
+                        <a href="" class="home-filter__page-btn home-filter__page-btn--disabled">
+                            <i class="home-filter__page-icon ti-angle-left"></i>
+                        </a>
+                        <a href="" class="home-filter__page-btn">
+                            <i class="home-filter__page-icon ti-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-product">
+                <div class="grid__row">
+                    <!-- Product item -->
+                    @foreach (var item in Model)
+                    {
+                        <div class="grid__column-2-4">
+                            <a class="home-product-item" href="@Url.Action("Index","ProductDetail", new { id = item.ProductId })">
+                                <div class="home-product-item-img" style="background-image: url(@item.ProductImages);"></div>
+                                <h4 class="home-product-item-name">@item.ProductName</h4>
+                                <div class="home-product-item-price">
+                                    @if (item.ProductSaleOff > 0)
+                                    {
+                                        var priceOld = @item.ProductPrice;
+                                        var priceNew = priceOld * (100 - item.ProductSaleOff) / 100;
+                                        <span class="home-product-item-price-old">@priceOld.ToString("#,##0")<span>đ</span></span>
+                                        <div class="home-product-item-price-new">@priceNew.ToString("#,##0")<span>đ</span></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="home-product-item-price-new">@item.ProductPrice.ToString("#,##0")<span>đ</span></div>
+                                    }
+                                </div>
+
+                                <div class="home-product-item__action">
+                                    <span class="home-product-item__like home-product-item__like--liked">
+                                        <i class="home-product-item__like-icon-empty ti-heart"></i>
+                                        <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                    </span>
+                                    <div class="home-product-item__rating">
+                                        @if (item.RatingStar == null)
+                                        {
+                                            for (var i = 0; i < 5; i++)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            var star = Math.Round((double)item.RatingStar, 0);
+                                            for (var i = 0; i < star; i++)
+                                            {
+                                                <i class="home-product-item__star--gold fas fa-star"></i>
+                                            }
+                                            for (var i = 0; i < 5 - star; i++)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="home-product-item__favourite">
+                                    <i class="ti-check"></i>
+                                    <span>Yêu thích</span>
+                                </div>
+                                @if (@item.ProductSaleOff != 0)
+                                {
+                                    <div class="home-product-item__sale-off">
+                                        <span class="home-product-item__sale-off-percent">@item.ProductSaleOff<span>%</span></span>
+                                        <div class="home-product-item__sale-off-label">GIẢM</div>
+                                    </div>
+                                }
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <ul class="pagination home-product__pagination">
+                <li class="pagination-item">
+                    <a href="" class="pagination-item__link">
+                        <i class="pagination-item__icon ti-angle-left"></i>
+                    </a>
+                </li>
+
+                <li class="pagination-item pagination-item--active">
+                    <a href="" class="pagination-item__link">1</a>
+                </li>
+                <li class="pagination-item">
+                    <a href="" class="pagination-item__link">2</a>
+                </li>
+                <li class="pagination-item">
+                    <a href="" class="pagination-item__link">3</a>
+                </li>
+                <li class="pagination-item">
+                    <a href="" class="pagination-item__link">4</a>
+                </li>
+                <li class="pagination-item">
+                    <a href="" class="pagination-item__link">5</a>
+                </li>
+
+                <li class="pagination-item">
+                    <a href="" class="pagination-item__link">
+                        <i class="pagination-item__icon ti-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

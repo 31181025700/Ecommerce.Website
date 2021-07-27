@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var domain="http://localhost:34383/api/IProduct/api/User";
+var domain="http://localhost:34383/api/IUser/api/User";
 
 function callApi(endpoint, method='GET',body){
         return axios({
@@ -10,22 +10,22 @@ function callApi(endpoint, method='GET',body){
         }).catch(e=>{console.log(e)})
 }
  
-export function GET_ALL_ACCOUNT(endpoint){
+export function GET_ALL_CUSTOMER(endpoint){
     return callApi(endpoint,"GET");
 }
 
-export function GET_ACCOUNT(endpoint,id){
+export function GET_CUSTOMER(endpoint,id){
     return callApi(endpoint+"/"+id,"GET");
 }
 
-export function ADD_ACCOUNT(endpoint,data){
+export function ADD_CUSTOMER(endpoint,data){
     return callApi(endpoint,"POST",data);
 }
     
-export function EDIT_ACCOUNT(endpoint,data){
+export function EDIT_CUSTOMER(endpoint,data){
     return callApi(endpoint,"PUT",data);
 }
 
-export function DELETE_ACCOUNT(endpoint){
+export function DELETE_CUSTOMER(endpoint){
     return callApi(endpoint,"DELETE");
 }

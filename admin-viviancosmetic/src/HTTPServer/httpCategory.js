@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var domain="http://localhost:34383/api/IProduct/api/Category";
+var domain="http://localhost:34383/api/ICategory/api/Category";
 
 function callApi(endpoint, method='GET',body){
         return axios({

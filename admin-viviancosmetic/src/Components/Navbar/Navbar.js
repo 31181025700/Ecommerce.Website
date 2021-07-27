@@ -19,13 +19,13 @@ export default class Navbar extends Component {
                     </div>
                     <ul className="menu-list">
                         <li className="menu-item">
-                            <a href="/category" className="menu-item__link">Categories</a>
+                            <Link to="/category" className="menu-item__link">Categories</Link>
                         </li>
                         <li className="menu-item">
                             <Link to="/product" className="menu-item__link">Products</Link>
                         </li>
                         <li className="menu-item">
-                            <a href="/customer" className="menu-item__link">Customer</a>
+                            <Link to="/customer" className="menu-item__link">Customer</Link>
                         </li>
                     </ul>
                 </nav>

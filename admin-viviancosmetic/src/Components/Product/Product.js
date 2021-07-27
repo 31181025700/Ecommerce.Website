@@ -27,6 +27,13 @@ export default class Product extends Component {
         }
     }
 
+    convertCurrentDate(_date) {
+        var date = _date.substr(8, 2) + '/' + _date.substr(5, 2) + '/' + _date.substr(0, 4);
+        var time = _date.substr(11, 2) + ':' + _date.substr(14, 2) + ':' + _date.substr(17, 2);
+
+        return date + '\r\n' + time;
+    }
+
     render() {
         return (
             <div>
@@ -65,8 +72,10 @@ export default class Product extends Component {
                                 this.state.productList.map((product) => (
                                     <tr className="products-table__data" key={product.id}>
                                         <td className="btn btn--normal btn--edit-product">
+                                        <Link to={`/product/update/${product.id}`} className="btn--edit-product">
                                             <i className="fas fa-pencil-alt btn--edit-icon"></i>
                                             Edit
+                                        </Link>
                                         </td>
                                         <td className="btn btn--normal btn--delete-product"
                                             onClick={() => this.handleDelete(product.id)}>
@@ -103,8 +112,8 @@ export default class Product extends Component {
                                                 ? <i className="fas fa-check products-table__data--icon-check"></i>
                                                 : <i className="fas fa-times products-table__data--icon-cross"></i>}
                                         </td>
-                                        <td className="products-table__data--td">{product.createDate}</td>
-                                        <td className="products-table__data--td">{product.updatedTime}</td>
+                                        <td className="products-table__data--td">{this.convertCurrentDate(product.createDate)}</td>
+                                        <td className="products-table__data--td">{this.convertCurrentDate(product.updatedTime)}</td>
                                     </tr>
                                 ))
                             }

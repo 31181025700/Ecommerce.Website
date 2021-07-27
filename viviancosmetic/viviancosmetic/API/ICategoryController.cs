@@ -69,9 +69,9 @@ namespace viviancosmetic.API
         [Route("api/Category/Edit/{id}")]
         public int Edit(int id, Category _category)
         {
-            var product = db.Products.Find(id);
-            product.Name = _category.Name;
-            product.Description = _category.Description;
+            var category = db.Categories.Find(id);
+            category.Name = _category.Name;
+            category.Description = _category.Description;
 
             db.SaveChanges();
             return 1;

@@ -16,6 +16,11 @@
     font-size: 1.6rem;
 }
 
+.btn-add-new {
+    text-decoration: none;
+    color: var(--white-color);
+}
+
 /*body Product*/
 .admin__body {
     padding: 15px;
@@ -100,7 +105,13 @@ table tr:nth-child(even){
 
 .btn--edit-product,
 .btn--delete-product {
+    display: flex;
     margin: 17px 10px;
+}
+
+.btn--edit-product {
+    text-decoration: none;
+    color: var(--text-color);
 }
 
 .products-table__icon-decoration {

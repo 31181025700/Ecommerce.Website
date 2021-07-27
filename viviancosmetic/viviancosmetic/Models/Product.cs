@@ -27,6 +27,8 @@ namespace viviancosmetic.Data
 
         public int Sold { get; set; }
 
+        public int Stock { get; set; }
+
         public DateTime CreateDate { get; set; }
 
         public DateTime UpdatedTime { get; set; }

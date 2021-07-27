@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\HOCTAP\\THUCTAP\\viviancosmetic\\viviancosmetic\\viviancosmetic.csproj": {}
+    "F:\\HOCTAP\\THUCTAP\\Ecommerce.Website\\viviancosmetic\\viviancosmetic\\viviancosmetic.csproj": {}
   },
   "projects": {
-    "F:\\HOCTAP\\THUCTAP\\viviancosmetic\\viviancosmetic\\viviancosmetic.csproj": {
+    "F:\\HOCTAP\\THUCTAP\\Ecommerce.Website\\viviancosmetic\\viviancosmetic\\viviancosmetic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\HOCTAP\\THUCTAP\\viviancosmetic\\viviancosmetic\\viviancosmetic.csproj",
+        "projectUniqueName": "F:\\HOCTAP\\THUCTAP\\Ecommerce.Website\\viviancosmetic\\viviancosmetic\\viviancosmetic.csproj",
         "projectName": "viviancosmetic",
-        "projectPath": "F:\\HOCTAP\\THUCTAP\\viviancosmetic\\viviancosmetic\\viviancosmetic.csproj",
+        "projectPath": "F:\\HOCTAP\\THUCTAP\\Ecommerce.Website\\viviancosmetic\\viviancosmetic\\viviancosmetic.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "F:\\HOCTAP\\THUCTAP\\viviancosmetic\\viviancosmetic\\obj\\",
+        "outputPath": "F:\\HOCTAP\\THUCTAP\\Ecommerce.Website\\viviancosmetic\\viviancosmetic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -64,6 +64,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.4, )"
             }
           },
           "imports": [

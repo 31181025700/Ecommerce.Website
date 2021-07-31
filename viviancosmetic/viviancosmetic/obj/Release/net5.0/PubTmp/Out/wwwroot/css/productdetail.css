@@ -1,0 +1,268 @@
+body {
+    margin: 0;
+}
+
+.mtb-20 {
+    padding: 20px 0;
+}
+
+.product-detail__img {
+    width: 370px;
+    height: 460px;
+    background-color: var(--background-color-img);
+    margin-left: 130px;
+    border: 1px solid #d8d5d1;
+}
+
+.product-detail {
+    padding-right: 100px;
+}
+
+.product-detail__price-old {
+    margin-left: 10px;
+    font-size: 1.6rem;
+    color: #666;
+    text-decoration: line-through;
+}
+
+.product-detail__price-new {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-left: 10px;
+}
+
+.product-detail__title {
+    font-size: 2.6rem;
+    margin: 0;
+}
+
+.product-detail__data {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.product-detail__data--like-rating {
+    display: flex;
+    align-items: center;
+}
+
+.product-detail__data-like {
+    font-size: 1.4rem;
+    color: #c10202;
+    margin: 0;
+}
+
+.product-detail__rating {
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+
+.product-detail__rating-star--gold {
+    color: var(--star-gold-color);
+}
+
+.product-detail__rating-star--empty {
+    color: #ccc;
+}
+
+.bulkhead {
+    font-size: 1.3rem;
+    margin: 0 5px;
+}
+.product-detail__data-sold,
+.product-detail__data-sold-text {
+    font-size: 1.4rem;
+    margin: 0 2px;
+}
+
+.product-detail__data-sold-text {
+    color: #666;
+}
+
+
+.product-detail__description-text,
+.product-detail__ingredient-text {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-top: 1px;
+}
+
+.product-detail__description,
+.product-detail__ingredient {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.product-detail__price {
+    display: block;
+    font-size: 1.8rem;
+    margin: 14px 0;
+}
+
+.product-detail__btn {
+    display: flex;
+    margin-top: 10px;
+}
+
+.btn.btn__add-cart {
+    background-color: #cb677463;
+    color: #a40016;
+    border: 1px solid #c12a3e;
+    margin-right: 14px;
+}
+
+.btn__add-cart:hover {
+    background-color: #cb677426;
+}
+
+.btn.btn__buy-now {
+    width: 146px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn__buy-now:hover {
+    background-color: #cb6774e0;
+}
+
+.product-detail__description,
+.product-detail__ingredient {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 1px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.comment-rating-box,
+.user-review-box {
+    padding: 10px;
+    margin: auto;
+    width: 940px;
+    background-color: var(--background-color-img);
+    border: 1px solid #d8d5d1;
+}
+
+.comment-title {
+    font-size: 1.6rem;
+    margin: 5px 0 10px;
+}
+
+.rating-box-star--gold {
+    font-size: 2rem;
+    color: var(--star-gold-color);
+}
+
+.rating-star-title,
+.comment-box-title {
+    font-size: 1.4rem;
+}
+
+.rating-star-title {
+    margin-bottom: 0;
+}
+
+.comment-box-title {
+    margin-top: 10px;
+}
+
+.comment-box__input {
+    width: 100%;
+    height: 80px;
+    font-size: 1.3rem;
+    padding-left: 5px;
+}
+
+.rating-star-title,
+.comment-box-title,
+.user-review-box__name,
+.user-review-box__rating-star,
+.user-review-text {
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.comment-rating-box-btn {
+    display: block;
+    text-align: left;
+    margin-top: 14px;
+}
+
+.btn.btn-send-review {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.btn.btn-send-review:hover {
+    border: 2px solid var(--primary-color);
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+
+.user-unable-login {
+    margin: 20px 0;
+    text-align: center;
+}
+
+
+.alert-login {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+.to-user-login {
+    font-size: 1.8rem;
+    color: #CE0003;
+}
+
+.to-user-login:hover {
+    text-decoration: none;
+    color: #F2010C;
+}
+
+.rating-box {
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.rating-box:hover {
+    cursor: pointer;
+}
+
+.rating-box-star--gold,
+.user-review-box__rating-star--gold {
+    color: var(--star-gold-color);
+}
+
+.rating-box-star--empty,
+.user-review-box__rating-star--empty {
+    color: #ccc;
+}
+
+.user-review-box__rating-star {
+    padding-top: 5px;
+}
+
+.user-review-box__name {
+    margin: 5px 0 0;
+    font-weight: 500;
+}
+
+.user-review-text {
+    margin-bottom: 0;
+}
+
+.user-review-date {
+    font-size: 1.4rem;
+    color: #999;
+    text-align: right;
+    margin: 0;
+}
+
+

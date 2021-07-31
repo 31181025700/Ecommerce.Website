@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var domain="http://localhost:34383/api/IUser/api/User";
+var domain="https://viviancosmetic.azurewebsites.net/api/IUser/api/User";
 
 function callApi(endpoint, method='GET',body){
         return axios({

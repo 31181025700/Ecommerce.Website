@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var domain="http://localhost:34383/api/ICategory/api/Category";
+var domain="https://viviancosmetic.azurewebsites.net/api/ICategory/api/Category";
 
 function callApi(endpoint, method='GET',body){
         return axios({

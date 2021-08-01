@@ -825,10 +825,14 @@
     list-style: none;
 }
 
-.category-item--active {
 
+.category-item--active .category-item__link {
+    color: var(--primary-color);
 }
 
+.category-item--normal .category-item__link {
+    color: var(--text-color);
+}
 .category-item {
     position: relative;
 }
